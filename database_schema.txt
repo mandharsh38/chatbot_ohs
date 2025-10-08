@@ -1,0 +1,105 @@
+CREATE DATABASE IF NOT EXISTS training_chatbot;
+USE training_chatbot;
+
+
+-- Employees
+
+
+CREATE TABLE employee (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(100) NOT NULL UNIQUE,
+    full_name VARCHAR(200),
+    email VARCHAR(200),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+
+-- Training Modules
+
+CREATE TABLE training_module (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(255) NOT NULL,
+    description TEXT,
+    content_text LONGTEXT NOT NULL,
+    image_url VARCHAR(500),
+    active BOOLEAN DEFAULT TRUE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+
+-- MCQs
+
+CREATE TABLE mcq (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    module_id INT NOT NULL,
+    question_text TEXT NOT NULL,
+    question_image VARCHAR(500),
+    choice_a TEXT NOT NULL,
+    choice_b TEXT NOT NULL,
+    choice_c TEXT NOT NULL,
+    choice_d TEXT NOT NULL,
+    correct_choice ENUM('A','B','C','D') NOT NULL,
+    weight FLOAT DEFAULT 1.0,
+    FOREIGN KEY (module_id) REFERENCES training_module(id) ON DELETE CASCADE
+);
+
+
+-- Test Configuration (per module)
+
+CREATE TABLE test_config (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    module_id INT NOT NULL UNIQUE,
+    num_questions INT DEFAULT 30,
+    passing_percentage FLOAT DEFAULT 70.0,
+    retrain_days INT DEFAULT 365,
+    enforce_retrain BOOLEAN DEFAULT TRUE,
+    FOREIGN KEY (module_id) REFERENCES training_module(id) ON DELETE CASCADE
+);
+
+
+-- Test Attempts
+
+CREATE TABLE test_attempt (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    module_id INT NOT NULL,
+    score FLOAT DEFAULT 0.0,
+    passed BOOLEAN DEFAULT FALSE,
+    started_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    completed_at TIMESTAMP NULL,
+    FOREIGN KEY (user_id) REFERENCES employee(id) ON DELETE CASCADE,
+    FOREIGN KEY (module_id) REFERENCES training_module(id) ON DELETE CASCADE
+);
+
+
+-- Test Answers
+
+CREATE TABLE test_answer (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    attempt_id INT NOT NULL,
+    question_id INT NOT NULL,
+    selected_choice ENUM('A','B','C','D'),
+    correct BOOLEAN,
+    FOREIGN KEY (attempt_id) REFERENCES test_attempt(id) ON DELETE CASCADE,
+    FOREIGN KEY (question_id) REFERENCES mcq(id) ON DELETE CASCADE
+);
+
+
+-- Training Completion Tracker
+
+CREATE TABLE training_completion (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    module_id INT NOT NULL,
+    completed_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES employee(id) ON DELETE CASCADE,
+    FOREIGN KEY (module_id) REFERENCES training_module(id) ON DELETE CASCADE,
+    UNIQUE KEY (user_id, module_id)
+);
+
+
+-- Indexes for performance
+
+CREATE INDEX idx_mcq_module ON mcq(module_id);
+CREATE INDEX idx_attempt_user_module ON test_attempt(user_id, module_id, completed_at);
+CREATE INDEX idx_answer_attempt ON test_answer(attempt_id);

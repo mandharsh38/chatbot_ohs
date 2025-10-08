@@ -1,0 +1,65 @@
+USE training_chatbot;
+
+-- ==============
+-- Employee
+-- ==============
+INSERT INTO employee (username, full_name, email)
+VALUES 
+('emp001', 'Harsh Mand', 'mandharsh@employee.com');
+
+-- ==============
+-- Training Module
+-- ==============
+INSERT INTO training_module (title, description, content_text, image_url)
+VALUES (
+  'POSH Training',
+  'Mandatory training on Prevention of Sexual Harassment (POSH) at the workplace.',
+  'This training covers definitions of sexual harassment, reporting mechanisms, employer responsibilities, and employee rights under the POSH Act. Employees must complete this training before attempting the test.',
+  'https://example.com/images/posh_cover.jpg'
+);
+
+-- Capture module_id for later inserts
+SET @module_id = LAST_INSERT_ID();
+
+-- ==============
+-- MCQs
+-- ==============
+INSERT INTO mcq (module_id, question_text, choice_a, choice_b, choice_c, choice_d, correct_choice)
+VALUES
+(@module_id, 
+ 'What does POSH stand for?',
+ 'Prevention of Social Harassment',
+ 'Prevention of Sexual Harassment',
+ 'Policy on Staff Harassment',
+ 'Protection of Staff & HR',
+ 'B'),
+
+(@module_id,
+ 'Under the POSH Act, which of the following constitutes sexual harassment?',
+ 'Unwelcome physical contact and advances',
+ 'Demand or request for sexual favors',
+ 'Sexually colored remarks',
+ 'All of the above',
+ 'D'),
+
+(@module_id,
+ 'Who can file a complaint under the POSH Act?',
+ 'Only female employees',
+ 'Any aggrieved woman (employee, visitor, or customer)',
+ 'Only permanent employees',
+ 'Only contractual staff',
+ 'B');
+
+-- ==============
+-- Test Config
+-- ==============
+INSERT INTO test_config (module_id, num_questions, passing_percentage, retrain_days, enforce_retrain)
+VALUES
+(@module_id, 3, 70.0, 365, TRUE);
+
+-- ==============
+-- Training Completion
+-- ==============
+INSERT INTO training_completion (user_id, module_id)
+VALUES 
+(1, @module_id);

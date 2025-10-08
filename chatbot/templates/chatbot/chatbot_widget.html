@@ -1,0 +1,106 @@
+<!-- Floating chat widget -->
+<div class="chat-widget minimized" id="chatWidget" aria-hidden="false">
+    <div class="chat-card" id="chatCard">
+
+        <!-- Header -->
+        <div class="chat-header">
+            <div class="bot-left">
+                <div class="bot-avatar" aria-hidden="true">
+                    <svg width="76" height="76" viewBox="0 0 76 76" fill="none">
+                        <circle cx="37.5" cy="37.5" r="37.5" fill="#FED555" />
+                        <mask id="mask0_13_3" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0"
+                            width="76" height="76">
+                            <circle cx="37.6739" cy="37.6739" r="37.6319" fill="#FED555" />
+                        </mask>
+                        <g mask="url(#mask0_13_3)">
+                            <!-- SVG ellipses omitted for brevity -->
+                        </g>
+                    </svg>
+                </div>
+                <div class="bot-meta">
+                    <div class="bot-title" id="botTitle">OHS Training AI</div>
+                    <div class="bot-status">
+                        <span class="status-dot" aria-hidden="true"></span>
+                        <span style="font-size:12px;color:var(--accent);margin-left:6px">Online</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="header-actions">
+                <button class="icon-btn" id="minimizeBtn" title="Minimize / Restore" aria-label="Minimize">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <path d="M6 12h12" stroke="white" stroke-width="2" stroke-linecap="round" />
+                    </svg>
+                </button>
+
+                <button class="icon-btn" id="toggleSizeBtn" title="Toggle wide" aria-label="Toggle size">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none">
+                        <path d="M17.25 0H23M23 0V5.75M23 0L14.375 8.625M5.75 23H0M0 23V17.25M0 23L8.625 14.375"
+                            stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </button>
+
+                <button class="icon-btn" id="closeBtn" title="Close widget" aria-label="Close">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <path d="M18 6L6 18" stroke="white" stroke-width="2" stroke-linecap="round" />
+                        <path d="M6 6l12 12" stroke="white" stroke-width="2" stroke-linecap="round" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Body -->
+        <div class="chat-body" id="chatBody">
+            <div class="messages" id="messages">
+                <!-- Example user bubble -->
+                <div class="msg-row user">
+                    <div style="margin-right: -90px;">
+                        <div class="bubble user">What is the role of the ICC in a company?</div>
+                        <span class="ts">7:20</span>
+                    </div>
+                    <div class="bot-avatar-small" aria-hidden="true" style="background:#ffffff;">
+                        <svg width="24" height="24" viewBox="0 0 24 24">
+                            <g fill="none" stroke="currentColor" stroke-width="1.5">
+                                <circle cx="12" cy="6" r="4" />
+                                <path d="M20 17.5c0 2.485 0 4.5-8 4.5s-8-2.015-8-4.5S7.582 13 12 13s8 2.015 8 4.5Z" />
+                            </g>
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- Example bot bubble -->
+                <div class="msg-row bot">
+                    <div class="bot-avatar-small" aria-hidden="true">
+                        <svg width="76" height="76" viewBox="0 0 76 76" fill="none">
+                            <circle cx="37.5" cy="37.5" r="37.5" fill="#FED555" />
+                        </svg>
+                    </div>
+                    <div>
+                        <div class="bubble bot">
+                            The Internal Complaints Committee (ICC) handles POSH complaints and ensures a fair inquiry process.
+                        </div>
+                        <span class="ts">7:20</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modules panel -->
+            <div class="modules-panel" id="modulesPanel"></div>
+
+            <!-- Input -->
+            <div class="chat-input" id="chatInput">
+                <div class="input-box" role="search" aria-label="Message input">
+                    <button class="faq-pill" id="faqBtn" title="FAQs">📚 Modules</button>
+                    <input id="messageInput" type="text" placeholder="Type your message here..." aria-label="Type your message here" />
+                    <button class="send-btn" id="sendBtn" title="Send" aria-label="Send">
+                        <svg width="21" height="20" viewBox="0 0 21 20" fill="none">
+                            <path d="M8.8947 3.52499L16.028 7.09166C19.228 8.69166 19.228 11.3083 16.028 12.9083L8.8947 16.475C4.0947 18.875 2.13637 16.9083 4.53637 12.1167L5.26137 10.675C5.4447 10.3083 5.4447 9.69999 5.26137 9.33332L4.53637 7.88332C2.13637 3.09166 4.10304 1.12499 8.8947 3.52499Z"
+                                stroke="#162550" stroke-width="2.01435" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M5.50293 10H10.0029" stroke="#162550" stroke-width="2.01435" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

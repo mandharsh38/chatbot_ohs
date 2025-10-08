@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}OHS Training AI{% endblock %}</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="{% static 'chatbot/css/chatbot.css' %}">
+
+    {% block extra_head %}{% endblock %}
+</head>
+<body>
+    
+    <!-- Main content block -->
+    {% block content %}{% endblock %}
+
+    <!-- Chat widget -->
+    {% include 'chatbot/chatbot_widget.html' %}
+
+    <!-- JS -->
+    <script src="{% static 'chatbot/js/chatbot.js' %}"></script>
+    {% block extra_js %}{% endblock %}
+
+</body>
+</html>

@@ -36,7 +36,7 @@ body {
     position: fixed;
     right: 24px;
     bottom: 24px;
-    width: 380px;
+    width: 560px;
     max-width: calc(100% - 48px);
     border-radius: 18px;
     overflow: hidden;
@@ -50,7 +50,7 @@ body {
 /* compact/minimized state */
 .chat-widget.minimized {
     height: 75px;
-    width: 360px;
+    width: fit-content;
 }
 
 .chat-widget.minimized .chat-body {
@@ -203,7 +203,7 @@ body {
 }
 
 .bubble {
-    max-width: 72%;
+    /* max-width: 72%; */
     padding: 14px 16px;
     border-radius: 14px;
     line-height: 1.35;
@@ -401,9 +401,13 @@ body {
 }
 
 .training-block img {
-    max-width: 100%;
+    max-width: 90%;
     border-radius: 10px;
-    margin-top: 8px;
+    /* margin-top: 8px;
+    margin-left: auto;
+    margin-right: auto; */
+    margin: 8px auto;
+    display: block;
 }
 
 .training-actions {
@@ -470,4 +474,14 @@ body {
     padding: 8px 14px;
     font-size: 14px;
     cursor: pointer;
+}
+
+.fade-in {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
 }

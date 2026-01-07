@@ -7,15 +7,50 @@
             <div class="bot-left">
                 <div class="bot-avatar" aria-hidden="true">
                     <svg width="76" height="76" viewBox="0 0 76 76" fill="none">
-                        <circle cx="37.5" cy="37.5" r="37.5" fill="#FED555" />
-                        <mask id="mask0_13_3" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0"
-                            width="76" height="76">
-                            <circle cx="37.6739" cy="37.6739" r="37.6319" fill="#FED555" />
-                        </mask>
-                        <g mask="url(#mask0_13_3)">
-                            <!-- SVG ellipses omitted for brevity -->
-                        </g>
-                    </svg>
+                            <circle cx="37.5" cy="37.5" r="37.5" fill="#FED555" />
+                            <mask id="mask0_13_3" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0"
+                                width="76" height="76">
+                                <circle cx="37.6739" cy="37.6739" r="37.6319" fill="#FED555" />
+                            </mask>
+                            <g mask="url(#mask0_13_3)">
+                                <ellipse cx="18.7478" cy="18.7489" rx="18.7478" ry="18.7489"
+                                    transform="matrix(-0.666195 -0.745778 0.746016 -0.665927 56.5292 45.9875)"
+                                    fill="#FFF200" />
+                                <ellipse cx="18.7478" cy="18.7489" rx="18.7478" ry="18.7489"
+                                    transform="matrix(-0.666195 -0.745778 0.746016 -0.665927 60.9584 42.0338)"
+                                    fill="#FED555" />
+                                <ellipse cx="2.9685" cy="2.96848" rx="2.9685" ry="2.96848"
+                                    transform="matrix(-1.00013 0.00922206 -0.00920934 -0.99978 54.7185 28.2584)"
+                                    fill="#FFF200" />
+                                <ellipse cx="18.7478" cy="18.7489" rx="18.7478" ry="18.7489"
+                                    transform="matrix(0.666195 0.745778 -0.746016 0.665927 19.5392 30.0893)"
+                                    fill="#52CD52" />
+                                <ellipse cx="18.7478" cy="18.7489" rx="18.7478" ry="18.7489"
+                                    transform="matrix(0.666195 0.745778 -0.746016 0.665927 15.1102 34.043)"
+                                    fill="#FED555" />
+                                <ellipse cx="2.9685" cy="2.96848" rx="2.9685" ry="2.96848"
+                                    transform="matrix(1.00013 -0.00922206 0.00920934 0.99978 21.3499 47.8183)"
+                                    fill="#52CD52" />
+                                <ellipse cx="18.7489" cy="18.7478" rx="18.7489" ry="18.7478"
+                                    transform="matrix(-0.746016 0.665927 -0.666194 -0.745778 45.3097 19.7647)"
+                                    fill="#529BCD" />
+                                <ellipse cx="18.7489" cy="18.7478" rx="18.7489" ry="18.7478"
+                                    transform="matrix(-0.746016 0.665927 -0.666194 -0.745778 41.3542 15.3371)"
+                                    fill="#FED555" />
+                                <ellipse cx="2.96848" cy="2.9685" rx="2.96848" ry="2.9685"
+                                    transform="matrix(0.00920933 0.99978 -1.00013 0.00922206 27.574 21.5751)"
+                                    fill="#52B4CD" />
+                                <ellipse cx="18.7489" cy="18.7478" rx="18.7489" ry="18.7478"
+                                    transform="matrix(0.746016 -0.665927 0.666195 0.745778 30.5294 56.3786)"
+                                    fill="#FF0206" />
+                                <ellipse cx="18.7489" cy="18.7478" rx="18.7489" ry="18.7478"
+                                    transform="matrix(0.746016 -0.665927 0.666195 0.745778 34.4845 60.8061)"
+                                    fill="#FED555" />
+                                <ellipse cx="2.96848" cy="2.9685" rx="2.96848" ry="2.9685"
+                                    transform="matrix(-0.00920934 -0.99978 1.00013 -0.00922206 48.265 54.5682)"
+                                    fill="#FF0004" />
+                            </g>
+                        </svg>
                 </div>
                 <div class="bot-meta">
                     <div class="bot-title" id="botTitle">OHS Training AI</div>
@@ -40,44 +75,70 @@
                     </svg>
                 </button>
 
-                <button class="icon-btn" id="closeBtn" title="Close widget" aria-label="Close">
+                {% comment %} <button class="icon-btn" id="closeBtn" title="Close widget" aria-label="Close">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                         <path d="M18 6L6 18" stroke="white" stroke-width="2" stroke-linecap="round" />
                         <path d="M6 6l12 12" stroke="white" stroke-width="2" stroke-linecap="round" />
                     </svg>
-                </button>
+                </button> {% endcomment %}
             </div>
         </div>
 
         <!-- Body -->
         <div class="chat-body" id="chatBody">
-            <div class="messages" id="messages">
-                <!-- Example user bubble -->
-                <div class="msg-row user">
-                    <div style="margin-right: -90px;">
-                        <div class="bubble user">What is the role of the ICC in a company?</div>
-                        <span class="ts">7:20</span>
-                    </div>
-                    <div class="bot-avatar-small" aria-hidden="true" style="background:#ffffff;">
-                        <svg width="24" height="24" viewBox="0 0 24 24">
-                            <g fill="none" stroke="currentColor" stroke-width="1.5">
-                                <circle cx="12" cy="6" r="4" />
-                                <path d="M20 17.5c0 2.485 0 4.5-8 4.5s-8-2.015-8-4.5S7.582 13 12 13s8 2.015 8 4.5Z" />
-                            </g>
-                        </svg>
-                    </div>
-                </div>
-
+            <div class="messages" id="messages">                
                 <!-- Example bot bubble -->
                 <div class="msg-row bot">
                     <div class="bot-avatar-small" aria-hidden="true">
                         <svg width="76" height="76" viewBox="0 0 76 76" fill="none">
                             <circle cx="37.5" cy="37.5" r="37.5" fill="#FED555" />
+                            <mask id="mask0_13_3" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0"
+                                width="76" height="76">
+                                <circle cx="37.6739" cy="37.6739" r="37.6319" fill="#FED555" />
+                            </mask>
+                            <g mask="url(#mask0_13_3)">
+                                <ellipse cx="18.7478" cy="18.7489" rx="18.7478" ry="18.7489"
+                                    transform="matrix(-0.666195 -0.745778 0.746016 -0.665927 56.5292 45.9875)"
+                                    fill="#FFF200" />
+                                <ellipse cx="18.7478" cy="18.7489" rx="18.7478" ry="18.7489"
+                                    transform="matrix(-0.666195 -0.745778 0.746016 -0.665927 60.9584 42.0338)"
+                                    fill="#FED555" />
+                                <ellipse cx="2.9685" cy="2.96848" rx="2.9685" ry="2.96848"
+                                    transform="matrix(-1.00013 0.00922206 -0.00920934 -0.99978 54.7185 28.2584)"
+                                    fill="#FFF200" />
+                                <ellipse cx="18.7478" cy="18.7489" rx="18.7478" ry="18.7489"
+                                    transform="matrix(0.666195 0.745778 -0.746016 0.665927 19.5392 30.0893)"
+                                    fill="#52CD52" />
+                                <ellipse cx="18.7478" cy="18.7489" rx="18.7478" ry="18.7489"
+                                    transform="matrix(0.666195 0.745778 -0.746016 0.665927 15.1102 34.043)"
+                                    fill="#FED555" />
+                                <ellipse cx="2.9685" cy="2.96848" rx="2.9685" ry="2.96848"
+                                    transform="matrix(1.00013 -0.00922206 0.00920934 0.99978 21.3499 47.8183)"
+                                    fill="#52CD52" />
+                                <ellipse cx="18.7489" cy="18.7478" rx="18.7489" ry="18.7478"
+                                    transform="matrix(-0.746016 0.665927 -0.666194 -0.745778 45.3097 19.7647)"
+                                    fill="#529BCD" />
+                                <ellipse cx="18.7489" cy="18.7478" rx="18.7489" ry="18.7478"
+                                    transform="matrix(-0.746016 0.665927 -0.666194 -0.745778 41.3542 15.3371)"
+                                    fill="#FED555" />
+                                <ellipse cx="2.96848" cy="2.9685" rx="2.96848" ry="2.9685"
+                                    transform="matrix(0.00920933 0.99978 -1.00013 0.00922206 27.574 21.5751)"
+                                    fill="#52B4CD" />
+                                <ellipse cx="18.7489" cy="18.7478" rx="18.7489" ry="18.7478"
+                                    transform="matrix(0.746016 -0.665927 0.666195 0.745778 30.5294 56.3786)"
+                                    fill="#FF0206" />
+                                <ellipse cx="18.7489" cy="18.7478" rx="18.7489" ry="18.7478"
+                                    transform="matrix(0.746016 -0.665927 0.666195 0.745778 34.4845 60.8061)"
+                                    fill="#FED555" />
+                                <ellipse cx="2.96848" cy="2.9685" rx="2.96848" ry="2.9685"
+                                    transform="matrix(-0.00920934 -0.99978 1.00013 -0.00922206 48.265 54.5682)"
+                                    fill="#FF0004" />
+                            </g>
                         </svg>
                     </div>
                     <div>
                         <div class="bubble bot">
-                            The Internal Complaints Committee (ICC) handles POSH complaints and ensures a fair inquiry process.
+                            Welcome to OHS Training Chatbot, please select a module to get started
                         </div>
                         <span class="ts">7:20</span>
                     </div>
@@ -91,7 +152,7 @@
             <div class="chat-input" id="chatInput">
                 <div class="input-box" role="search" aria-label="Message input">
                     <button class="faq-pill" id="faqBtn" title="FAQs">📚 Modules</button>
-                    <input id="messageInput" type="text" placeholder="Type your message here..." aria-label="Type your message here" />
+                    <input id="messageInput" type="text" placeholder="Please select 'Questions' option from a module" aria-label="Please select 'Questions' option from a module" disabled />
                     <button class="send-btn" id="sendBtn" title="Send" aria-label="Send">
                         <svg width="21" height="20" viewBox="0 0 21 20" fill="none">
                             <path d="M8.8947 3.52499L16.028 7.09166C19.228 8.69166 19.228 11.3083 16.028 12.9083L8.8947 16.475C4.0947 18.875 2.13637 16.9083 4.53637 12.1167L5.26137 10.675C5.4447 10.3083 5.4447 9.69999 5.26137 9.33332L4.53637 7.88332C2.13637 3.09166 4.10304 1.12499 8.8947 3.52499Z"

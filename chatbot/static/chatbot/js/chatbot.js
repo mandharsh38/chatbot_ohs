@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const card = document.getElementById('chatCard');
     const minimizeBtn = document.getElementById('minimizeBtn');
     const toggleSizeBtn = document.getElementById('toggleSizeBtn');
-    const closeBtn = document.getElementById('closeBtn');
+    // const closeBtn = document.getElementById('closeBtn');
     const messages = document.getElementById('messages');
     const messageInput = document.getElementById('messageInput');
     const sendBtn = document.getElementById('sendBtn');
@@ -47,13 +47,13 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // close button hides widget (you can provide a reopen button in your real app)
-    closeBtn.addEventListener('click', () => {
-        widget.style.display = 'none';
-        // Add a small programmatic reopen after 1s for demo (in prod, you'll have a floating launcher)
-        setTimeout(() => {
-            widget.style.display = ''; // show again (demo). Remove this in production.
-        }, 1000);
-    });
+    // closeBtn.addEventListener('click', () => {
+    //     widget.style.display = 'none';
+    //     // Add a small programmatic reopen after 1s for demo (in prod, you'll have a floating launcher)
+    //     setTimeout(() => {
+    //         widget.style.display = ''; // show again (demo). Remove this in production.
+    //     }, 1000);
+    // });
 
     // message sending: append user bubble, then dummy bot reply
     function appendUserMessage(text) {
@@ -68,7 +68,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                     </g>
                                 </svg>`;
         const container = document.createElement('div');
-        const bubble = document.createElement('div'); bubble.className = 'bubble user'; bubble.innerText = text;
+        const bubble = document.createElement('div'); bubble.className = 'bubble user'; bubble.innerHTML = text;
         const ts = document.createElement('span'); ts.className = 'ts'; ts.innerText = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
         container.appendChild(bubble); container.appendChild(ts);
         row.appendChild(container); row.appendChild(avatar);
@@ -77,7 +77,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function appendBotMessage(text) {
-        const row = document.createElement('div'); row.className = 'msg-row bot';
+        const row = document.createElement('div'); row.className = 'msg-row bot fade-in';
         const avatar = document.createElement('div'); avatar.className = 'bot-avatar-small';
         avatar.innerHTML = `<svg width="76" height="76" viewBox="0 0 76 76" fill="none">
                                     <circle cx="37.5" cy="37.5" r="37.5" fill="#FED555" />
@@ -125,11 +125,12 @@ document.addEventListener("DOMContentLoaded", () => {
                                     </g>
                                 </svg>`;
         const container = document.createElement('div');
-        const bubble = document.createElement('div'); bubble.className = 'bubble bot'; bubble.innerText = text;
+        const bubble = document.createElement('div'); bubble.className = 'bubble bot'; bubble.innerHTML = text.replace(/\n/g, '<br>');
         const ts = document.createElement('span'); ts.className = 'ts'; ts.innerText = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
         container.appendChild(bubble); container.appendChild(ts);
         row.appendChild(avatar); row.appendChild(container);
         messages.appendChild(row);
+        requestAnimationFrame(() => row.classList.add('visible'));
         messages.scrollTop = messages.scrollHeight;
     }
 
@@ -147,8 +148,50 @@ document.addEventListener("DOMContentLoaded", () => {
         loader.className = 'msg-row bot';
         loader.innerHTML = `
             <div class="bot-avatar-small" aria-hidden="true">
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
-                    <circle cx="12" cy="12" r="10" fill="#0b2b45"/>
+                <svg width="76" height="76" viewBox="0 0 76 76" fill="none">
+                    <circle cx="37.5" cy="37.5" r="37.5" fill="#FED555" />
+                    <mask id="mask0_13_3" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0"
+                        width="76" height="76">
+                        <circle cx="37.6739" cy="37.6739" r="37.6319" fill="#FED555" />
+                    </mask>
+                    <g mask="url(#mask0_13_3)">
+                        <ellipse cx="18.7478" cy="18.7489" rx="18.7478" ry="18.7489"
+                            transform="matrix(-0.666195 -0.745778 0.746016 -0.665927 56.5292 45.9875)"
+                            fill="#FFF200" />
+                        <ellipse cx="18.7478" cy="18.7489" rx="18.7478" ry="18.7489"
+                            transform="matrix(-0.666195 -0.745778 0.746016 -0.665927 60.9584 42.0338)"
+                            fill="#FED555" />
+                        <ellipse cx="2.9685" cy="2.96848" rx="2.9685" ry="2.96848"
+                            transform="matrix(-1.00013 0.00922206 -0.00920934 -0.99978 54.7185 28.2584)"
+                            fill="#FFF200" />
+                        <ellipse cx="18.7478" cy="18.7489" rx="18.7478" ry="18.7489"
+                            transform="matrix(0.666195 0.745778 -0.746016 0.665927 19.5392 30.0893)"
+                            fill="#52CD52" />
+                        <ellipse cx="18.7478" cy="18.7489" rx="18.7478" ry="18.7489"
+                            transform="matrix(0.666195 0.745778 -0.746016 0.665927 15.1102 34.043)"
+                            fill="#FED555" />
+                        <ellipse cx="2.9685" cy="2.96848" rx="2.9685" ry="2.96848"
+                            transform="matrix(1.00013 -0.00922206 0.00920934 0.99978 21.3499 47.8183)"
+                            fill="#52CD52" />
+                        <ellipse cx="18.7489" cy="18.7478" rx="18.7489" ry="18.7478"
+                            transform="matrix(-0.746016 0.665927 -0.666194 -0.745778 45.3097 19.7647)"
+                            fill="#529BCD" />
+                        <ellipse cx="18.7489" cy="18.7478" rx="18.7489" ry="18.7478"
+                            transform="matrix(-0.746016 0.665927 -0.666194 -0.745778 41.3542 15.3371)"
+                            fill="#FED555" />
+                        <ellipse cx="2.96848" cy="2.9685" rx="2.96848" ry="2.9685"
+                            transform="matrix(0.00920933 0.99978 -1.00013 0.00922206 27.574 21.5751)"
+                            fill="#52B4CD" />
+                        <ellipse cx="18.7489" cy="18.7478" rx="18.7489" ry="18.7478"
+                            transform="matrix(0.746016 -0.665927 0.666195 0.745778 30.5294 56.3786)"
+                            fill="#FF0206" />
+                        <ellipse cx="18.7489" cy="18.7478" rx="18.7489" ry="18.7478"
+                            transform="matrix(0.746016 -0.665927 0.666195 0.745778 34.4845 60.8061)"
+                            fill="#FED555" />
+                        <ellipse cx="2.96848" cy="2.9685" rx="2.96848" ry="2.9685"
+                            transform="matrix(-0.00920934 -0.99978 1.00013 -0.00922206 48.265 54.5682)"
+                            fill="#FF0004" />
+                    </g>
                 </svg>
             </div>
             <div>
@@ -158,18 +201,18 @@ document.addEventListener("DOMContentLoaded", () => {
         messages.scrollTop = messages.scrollHeight;
 
         try {
-            // send message to Django API
-            const res = await fetch('/api/chat/', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ message: txt })
-            });
+            let data;
 
-            const data = await res.json();
+            // ✅ If QA mode is active, use the module Q&A API
+            if (qaMode && currentModule) {
+                data = await askQuestion(currentModule.id, txt);
+            } else {
+                data= "⚠️ Please select a module and an action first.";
+            }
 
             // remove loader and append bot response
             loader.remove();
-            appendBotMessage(data.response || 'Oops! No response from server.');
+            appendBotMessage(data || 'Oops! No response from server.');
             messages.scrollTop = messages.scrollHeight;
 
         } catch (err) {
@@ -185,14 +228,6 @@ document.addEventListener("DOMContentLoaded", () => {
             e.preventDefault();
             sendBtn.click();
         }
-    });
-
-    // FAQ button: show small quick replies
-    faqBtn.addEventListener('click', () => {
-        appendUserMessage('Show FAQs');
-        setTimeout(() => {
-            appendBotMessage('FAQs:\n 1) What is POSH training?\n  2) How often to retrain?\n  (This is demo content.)');
-        }, 350);
     });
 
     /* Accessibility: allow focusing the widget with keyboard */
@@ -258,16 +293,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // When module chosen
     function selectModule(mod) {
-        console.log(mod);
+        // console.log(mod);
         appendUserMessage(`Selected: ${mod.title}`);
-        currentModule = mod;
-        qaMode = false;
+        currentModule = mod;       
         appendBotMessage(`Choose an option for <b>${mod.title}</b>:`);
         showModuleMenu(mod);
     }
 
     // Hook: FAQ button now shows module list instead
-    faqBtn.removeEventListener('click', () => { });
     faqBtn.addEventListener('click', async () => {
         appendBotMessage('Fetching available modules...');
         const mods = await fetchModules();
@@ -277,43 +310,72 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let currentModule = null;
 
-    // Fake API: training content
+    // fetch training content
     async function fetchTrainingContent(moduleId) {
-        // Replace with real API call: `/api/module/${moduleId}/content/`
-        if (moduleId === 1) {
+        try {
+            const response = await fetch(`/api/module/${moduleId}/content/`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+
+            if (!response.ok) {
+                throw new Error(`Failed to load content: ${response.statusText}`);
+            }
+
+            const data = await response.json();
+
+            // Expected backend format: 
+            // [{ "type": "text", "value": "..." }, { "type": "image", "value": "..." }]
+            return data;
+        } catch (error) {
+            console.error("Error fetching training content:", error);
             return [
-                { type: 'text', value: "Welcome to POSH Training. This module will cover the basics of the POSH Act." },
-                { type: 'image', value: "https://cdn.britannica.com/47/246247-050-F1021DE9/AI-text-to-image-photo-robot-with-computer.jpg" },
-                { type: 'text', value: "The POSH Act mandates prevention and redressal of sexual harassment at the workplace." }
+                { type: 'text', value: "Could not load training content. Please try again later." }
             ];
         }
-        return [{ type: 'text', value: "Training content coming soon..." }];
     }
+
 
     // Render training inside chat
     async function startTraining(mod) {
+        if (qaMode) {
+            qaMode = false;
+            messageInput.disabled = true;
+            messageInput.placeholder = "Please select 'Questions' option from a module";
+        }
+
         currentModule = mod;
         showMessages();
         appendBotMessage(`Starting training for <b>${mod.title}</b>...`);
 
         const content = await fetchTrainingContent(mod.id);
+
         for (const block of content) {
+            // Wait before showing each message (1.5s)
+            await new Promise(resolve => setTimeout(resolve, 1500));
+
             if (block.type === 'text') {
-                appendBotMessage(block.value);
+                appendBotMessage(block.value, { animate: true });
             } else if (block.type === 'image') {
                 const div = document.createElement('div');
-                div.className = 'training-block';
+                div.className = 'training-block fade-in';
                 div.innerHTML = `<img src="${block.value}" alt="Training image"/>`;
                 messages.appendChild(div);
+                requestAnimationFrame(() => div.classList.add('visible'));
+                messages.scrollTop = messages.scrollHeight;
             }
         }
 
-        // Add "Mark complete" button
+        // Add "Mark complete" button after all content
         const actions = document.createElement('div');
-        actions.className = 'training-actions';
+        actions.className = 'training-actions fade-in';
         actions.innerHTML = `<button class="btn-complete">Mark Training Complete</button>`;
         actions.querySelector('button').addEventListener('click', () => completeTraining(mod.id));
         messages.appendChild(actions);
+
+        // Scroll once at the end
         messages.scrollTop = messages.scrollHeight;
     }
 
@@ -326,30 +388,54 @@ document.addEventListener("DOMContentLoaded", () => {
         // Here we could set mod.status='completed' and refresh module list if needed
     }
 
-    // Hook FAQ to module list
-    faqBtn.addEventListener('click', async () => {
-        appendBotMessage('Fetching available modules...');
-        const mods = await fetchModules();
-        renderModules(mods);
-        showModules();
-    });
-
     // test after training 
 
     let testState = null;
 
-    // Fake API: start test
+    // Fetch and start test for a module
     async function startTest(moduleId) {
-        // Replace with real API call: /api/module/${moduleId}/start_test/
-        return [
-            { id: 101, question: "What does POSH stand for?", options: ["Prevention of Social Harassment", "Prevention of Sexual Harassment", "Policy on Staff Harassment", "Protection of Staff & HR"], correct: "B" },
-            { id: 102, question: "Which of these is sexual harassment?", options: ["Unwelcome physical contact", "Sexually colored remarks", "Demand for favors", "All of the above"], correct: "D" },
-            { id: 103, question: "Who can file a complaint?", options: ["Only female employees", "Any aggrieved woman", "Only permanent staff", "Only contractual staff"], correct: "B" }
-        ];
+        try {
+            const response = await fetch(`/api/module/${moduleId}/start_test/`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+
+            if (!response.ok) {
+                throw new Error(`Failed to start test: ${response.statusText}`);
+            }
+
+            // Expected backend format:
+            // [
+            //   { id: 101, question: "What does POSH stand for?", options: ["A", "B", "C", "D"] },
+            //   ...
+            // ]
+            const data = await response.json();
+
+            // Optional: shuffle questions
+            return data.sort(() => Math.random() - 0.5);
+
+        } catch (error) {
+            console.error("Error fetching test data:", error);
+            return [
+                {
+                    id: 0,
+                    question: "Error loading test questions.",
+                    options: ["Please try again later."],
+                    correct: null
+                }
+            ];
+        }
     }
 
     // Start test flow
     async function launchTest(mod) {
+        if(qaMode){
+            qaMode = false;
+            messageInput.disabled = true;
+            messageInput.placeholder = "Please select 'Questions' option from a module";
+        }
         appendBotMessage(`Starting test for <b>${mod.title}</b>.`);
         const questions = await startTest(mod.id);
 
@@ -428,26 +514,20 @@ document.addEventListener("DOMContentLoaded", () => {
     // qa mode 
     let qaMode = false;
 
-    // Dummy Q&A API
-    async function askQuestion(moduleId, text) {
-        // Later → real API: /api/module/${moduleId}/ask/
-        return `🤖 (dummy) You asked: "${text}". I'll fetch proper answers later.`;
+    // Q&A API
+    async function askQuestion(moduleId, txt) {
+
+        const res = await fetch(`/api/module/${currentModule.id}/ask/`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ question: txt })
+                });
+        const data = await res.json();
+        // console.log(data.answer)
+        return data.answer
+
+        // return `🤖 (dummy) You asked: "${text}". I'll fetch proper answers later.`;
     }
-
-    // Handle input send
-    sendBtn.addEventListener('click', async () => {
-        const text = msgInput.value.trim();
-        if (!text) return;
-        appendUserMessage(text);
-        msgInput.value = '';
-
-        if (qaMode && currentModule) {
-            const reply = await askQuestion(currentModule.id, text);
-            appendBotMessage(reply);
-        } else {
-            appendBotMessage("⚠️ Please select a module and an action first.");
-        }
-    });
 
     // Module action menu
     function showModuleMenu(mod) {
@@ -466,7 +546,6 @@ document.addEventListener("DOMContentLoaded", () => {
             btn.onclick = () => {
                 div.remove();
                 btnData.action();
-                // no need to call showMessages() here again
             };
             div.appendChild(btn);
         });
@@ -492,6 +571,9 @@ document.addEventListener("DOMContentLoaded", () => {
     function enterQAMode(mod) {
         qaMode = true;
         appendBotMessage(`You can now ask me questions about <b>${mod.title}</b>.`);
+        messageInput.disabled = false;
+        messageInput.placeholder = "Ask your question...";
+        messageInput.focus();
     }
 
 });

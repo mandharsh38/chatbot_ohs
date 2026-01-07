@@ -1,0 +1,4 @@
+mysqlclient
+transformers
+accelerate
+bitsandbytes

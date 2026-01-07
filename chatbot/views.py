@@ -70,7 +70,7 @@ def start_test(request, module_id):
 # model for POSH training module
 
 from huggingface_hub import login
-login("hugging face api key here")
+login("hf key heree plissss")
 
 # Load Phi-3-mini once at startup
 # MODEL_ID = "microsoft/phi-3-mini-4k-instruct"
